@@ -1,5 +1,4 @@
 package QuizMagic;
-
 import java.io.*;
 import java.net.*;
 
@@ -17,41 +16,77 @@ public class FilServidor extends Thread {
 		fentrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	}
 
-	// LOGICA DEL SERVIDOR. ATENC EL CLIENT
+	// L�GICA DEL SERVIDOR. ATENC EL CLIENT
 	public void run() {
+		String nom = "";
+		System.out.println("En fil: comunique amb: " + socket.toString());
+
+		// LLIG L'ALIAS O MALNOM
 		try {
-			String cadena = "";
-			boolean parar = false;
+			nom = fentrada.readLine();
+			System.out.println("En fil: llig nom: " + nom);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-			while (!cadena.trim().equals("*") && !parar) {
-				System.out.println("En fil: comunique amb: " + socket.toString());
-				try {
-					cadena = fentrada.readLine();
-					System.out.println("En fil: llig cadena " + cadena);
-					feixida.println(cadena.trim().toUpperCase());// ENVIE CADENA AMB MAJ�SCULES
-				} catch (IOException e) {
-					System.out.println("ERROR: client desconnectat");
-					parar = true;
-				}
+		// OBRIC EL FITXER DE PREGUNTES I RESPOSTES
+		File file = new File("PreguntesRespostes.txt");
+		FileReader fr = null;
+		BufferedReader br = null;
+		try {
+			fr = new FileReader(file);
+			br = new BufferedReader(fr);
+		} catch (FileNotFoundException e) {
+			System.out.println("No se encontro el archivo " + file.getName());
+		}
 
+		try {
+			String pregunta, respostafitxer, respostaclient;
+			int puntuacio = 0;
+
+			// PER CADA PREGUNTA QUE TROBE EN EL FITXER
+			while ((pregunta = br.readLine()) != null) {
+				// ENVIE LA L�NIA AL CLIENT
+				feixida.println(pregunta);
+				// REP LA RESPOSTA DEL CLIENT
+				respostaclient = fentrada.readLine();
+				// LLIG LA RESPOSTA DEL FITXER
+				respostafitxer = br.readLine();
+				// COMPARE. SI �S IGUAL SUME 1 A LA PUNTUACI�
+				if (respostafitxer.equals(respostaclient))
+					puntuacio++;
 			}
 
-			System.out.println("FI AMB " + socket.toString());
+			// ENVIE LA PUNTUACI�
+			feixida.println("Puntuaci�: " + puntuacio);
 
-			// TANQUE FLUXES I SOCKET
-			feixida.close();
-			try {
-				fentrada.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			try {
-				socket.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} catch (Exception e) {
-			System.out.println("ERROR");
+			// FIQUE LA PUNTUACI� AL FITXER
+			File fPuntuacion = new File("Puntuacions.txt");
+			BufferedWriter bw = null;
+			if (fPuntuacion.exists())
+				bw = new BufferedWriter(new FileWriter(fPuntuacion, true)); // MODE append
+			else
+				bw = new BufferedWriter(new FileWriter(fPuntuacion));
+			bw.write(nom + " " + puntuacio + "\n");
+			bw.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("FI AMB " + socket.toString());
+
+		// TANQUE FLUXES I SOCKET
+		feixida.close();
+		try {
+			fentrada.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			socket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

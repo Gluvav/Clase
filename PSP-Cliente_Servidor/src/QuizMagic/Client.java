@@ -16,18 +16,24 @@ public class Client {
 			// FLUX PER A L'ENTRADA PER TECLAT
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
-			String cadena, cadenaRebuda;
+			String nom;
 
-			System.out.println("Introdueix cadenes i rep en maj�scula. Introdueix * per a finalitzar");
-			do {
-				System.out.println("Introdueix cadena: ");
-				cadena = in.readLine();
-				feixida.println(cadena);
-				cadenaRebuda = fentrada.readLine();
-				System.out.println("Rep: " + cadenaRebuda);
+			System.out.println("Benvingut a Quiz Magic\nIntrodueix el nom del jugador");
+			nom = in.readLine();
+			feixida.println(nom);
 
-			} while (!(cadena.contentEquals("*")));
-
+			// REP LA PREGUNTA DEL SERVIDOR
+			String resposta, pregunta = fentrada.readLine();
+			// LLIG PREGUNTES FINS QUE ENVIE UNA CADENA QUE COMENCE PER Puntuaci�:
+			while (!(pregunta.startsWith("Puntuaci�:"))) {
+				System.out.println(pregunta);
+				// LLIG LA RESPOSTA DES DEL TECLAT
+				resposta = in.readLine();
+				// ENVIE LA RESPOSTA AL SERVIDOR
+				feixida.println(resposta);
+				pregunta = fentrada.readLine();
+			}
+			System.out.println("Molt b� " + nom + ". " + pregunta);
 			System.out.println("Fi comunicaci�");
 
 			// TANQUE FLUXOS I SOCKET
@@ -37,4 +43,5 @@ public class Client {
 			socket.close();
 		}
 	}
+
 }
