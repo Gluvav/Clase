@@ -1,0 +1,94 @@
+<odoo>
+    <data>
+
+        <!-- . -->
+        <record id="parque_bomberos1" model="odoo_model_practica4.parque">
+            <field name="name">IES Abastos</field>
+            <field name="año_fundacion">2000-12-24</field>
+            <field name="localidad">Valencia</field>
+            <field name="barras">True</field>
+            <field name="recargas_camiones">22</field>
+        </record>
+
+        <record id="parque_bomberos2" model="odoo_model_practica4.parque">
+            <field name="name">IES Juan de Garay</field>
+            <field name="año_fundacion">2000-12-24</field>
+            <field name="localidad">Valencia</field>
+            <field name="barras">False</field>
+            <field name="recargas_camiones">16</field>
+        </record>
+
+        <record id="parque_bomberos3" model="odoo_model_practica4.parque">
+            <field name="name">IES Font de San Lluis</field>
+            <field name="año_fundacion">2000-12-24</field>
+            <field name="localidad">Valencia</field>
+            <field name="barras">True</field>
+            <field name="recargas_camiones">33</field>
+        </record>
+        <!-- . -->
+        <record id="camion1" model="odoo_model_practica4.camion">
+            <field name="number_plate">0000BBB</field>
+            <field name="ruedas">8</field>
+            <field name="capacidad_b">6</field>
+            <field name="litros">69</field>
+            <field name="antiguedad">4</field>
+            <field name="kilometros">420</field>
+            <field name="parque_id" ref="parque_bomberos1"/>
+        </record>
+
+        <record id="camion2" model="odoo_model_practica4.camion">
+            <field name="number_plate">1111CCC</field>
+            <field name="ruedas">8</field>
+            <field name="capacidad_b">6</field>
+            <field name="litros">69</field>
+            <field name="antiguedad">4</field>
+            <field name="kilometros">420</field>
+            <field name="parque_id" ref="parque_bomberos2"/>
+        </record>
+
+        <record id="camion3" model="odoo_model_practica4.camion">
+            <field name="number_plate">2222DDD</field>
+            <field name="ruedas">8</field>
+            <field name="capacidad_b">6</field>
+            <field name="litros">69</field>
+            <field name="antiguedad">4</field>
+            <field name="kilometros">420</field>
+            <field name="parque_id" ref="parque_bomberos3"/>
+        </record>
+        <!-- . -->
+        <record id="bombero1" model="odoo_model_practica4.bomberos">
+            <field name="name">Ruben</field>
+            <field name="edad">22</field>
+            <field name="cumple">2000-12-24</field>
+            <field name="direccion">Calle Moncada</field>
+            <field name="sueldo">15000</field>
+            <field name="inicio_trabajo">2022-09-15</field>
+            <field name="puesto">conductor</field>
+            <field name="camion_id" ref="camion1"/>
+        </record>
+
+        <record id="bombero2" model="odoo_model_practica4.bomberos">
+            <field name="name">Fran</field>
+            <field name="edad">22</field>
+            <field name="cumple">2000-12-24</field>
+            <field name="direccion">Calle Moncada</field>
+            <field name="sueldo">15000</field>
+            <field name="inicio_trabajo">2022-09-15</field>
+            <field name="puesto">conductor</field>
+            <field name="camion_id" ref="camion2"/>
+        </record>
+
+        <record id="bombero3" model="odoo_model_practica4.bomberos">
+            <field name="name">Patrick</field>
+            <field name="edad">22</field>
+            <field name="cumple">2000-12-24</field>
+            <field name="direccion">Calle Moncada</field>
+            <field name="sueldo">15000</field>
+            <field name="inicio_trabajo">2022-09-15</field>
+            <field name="puesto">conductor</field>
+            <field name="camion_id" ref="camion3"/>
+        </record>
+        <!-- . -->
+
+    </data>
+</odoo>
