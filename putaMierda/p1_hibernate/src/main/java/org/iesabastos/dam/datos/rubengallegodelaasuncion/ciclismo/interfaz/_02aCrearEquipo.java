@@ -11,37 +11,35 @@ import org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.Equipo;
 
 public class _02aCrearEquipo {
 
-    static Boolean nomeqBool = true;
-    static Boolean direcBool = true;
+    static Boolean nomeqBool = false;
+    static Boolean direcBool = false;
 
     public static void main(String[] args) {
 
         Scanner str = new Scanner(System.in);
-        Scanner nums = new Scanner(System.in);
+        //Scanner nums = new Scanner(System.in);
 
-        String nomeq;
-        while (nomeqBool != false) {
+        String nomeq="";
+        while (nomeqBool != true) {
             System.out.println("Introduce el nombre del equipo:");
             nomeq = str.nextLine();
-            if (notInDatabase(nomeq) != true) {
+            if (notInDatabase(nomeq) == true) {
                 nomeqBool = true;
             } else {
                 nomeqBool = false;
             }
         }
-        String director;
-        while (nomeqBool != false) {
+        String director2="";
+        while (direcBool != true) {
             System.out.println("Introduce el nombre del director:");
-            director = str.nextLine();
-            if (notInDatabase(director) != true) {
+            director2 = str.nextLine();
+            if (notInDatabase(director2) == true) {
                 direcBool = true;
             } else {
                 direcBool = false;
             }
         }
-
-        createEquipo(nomeq, director);
-
+        createEquipo(nomeq, director2);
     }
 
     public static boolean notInDatabase(String str) {
@@ -60,7 +58,7 @@ public class _02aCrearEquipo {
             for (int i = 0; i < puertos.size(); i++) {
                 if ((puertos.get(i).getNomeq()).equals(str)) {
                     System.out.println("Nombre de Equipo ya existe.");
-                    return true;
+                    return false;
                 }
             }
 
@@ -74,7 +72,7 @@ public class _02aCrearEquipo {
             System.out.println("Ha pasado algo chungo :(");
             // TODO: handle exception
         }
-        return false;
+        return true;
 
     }
 
