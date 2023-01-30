@@ -1,0 +1,144 @@
+<odoo>
+  <data>
+    <!-- PRODUCTO TREE VIEW -->
+    <record model="ir.ui.view" id="cesta_compra_producto_tree">
+      <field name="name">cesta_compra.producto.tree</field>
+      <field name="model">cesta_compra.producto</field>
+      <field name="arch" type="xml">
+        <tree string="Producto" default_order="precio_unidad desc">
+          <field name="name"/>
+          <field name="cantidad"/>
+          <field name="tipo_producto"/>
+          <field name="precio_unidad"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Producto FORM VIEW -->
+    <record model="ir.ui.view" id="cesta_compra_producto_form">
+      <field name="name">cesta_compra.producto.form</field>
+      <field name="model">cesta_compra.producto</field>
+      <field name="arch" type="xml">
+        <form string="Producto">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="cantidad"/>
+              <field name="tipo_producto"/>
+              <field name="precio_unidad"/>
+              <field name="producto_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cesta_compra_producto">
+      <field name="name">Producto</field>
+      <field name="res_model">cesta_compra.producto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- CLIENTE TREE VIEW -->
+    <record model="ir.ui.view" id="cesta_compra_cliente_tree">
+      <field name="name">cesta_compra.cliente.tree</field>
+      <field name="model">cesta_compra.cliente</field>
+      <field name="arch" type="xml">
+        <tree string="Cliente">
+          <field name="name"/>
+          <field name="apellido1"/>
+          <field name="apellido2"/>
+          <field name="direccion"/>
+          <field name="dinero_total"/>
+          <field name="fecha_nacimiento"/>
+          <field name="NIF"/>
+          <!--<field name="edad" readonly="1"/>-->
+        </tree>
+      </field>
+    </record>
+
+    <!-- Cliente FORM VIEW -->
+    <record model="ir.ui.view" id="cesta_compra_cliente_form">
+      <field name="name">cesta_compra.cliente.form</field>
+      <field name="model">cesta_compra.cliente</field>
+      <field name="arch" type="xml">
+        <form string="Cliente">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="apellido1"/>
+              <field name="apellido2"/>
+              <field name="direccion"/>
+              <field name="dinero_total"/>
+              <field name="fecha_nacimiento"/>
+              <field name="edad"/>
+              <field name="compras_ids"/>
+            </group>
+            <group>
+              <field name="NIF"/>
+              <field name="mayor_edad"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cesta_compra_cliente">
+      <field name="name">Cliente</field>
+      <field name="res_model">cesta_compra.cliente</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Compra TREE VIEW -->
+    <record model="ir.ui.view" id="cesta_compra_compra_tree">
+      <field name="name">cesta_compra.compra.tree</field>
+      <field name="model">cesta_compra.compra</field>
+      <field name="arch" type="xml">
+        <tree string="Compra" default_order="id_comprador, fecha_compra">
+          <field name="id_inventario"/>
+          <field name="id_comprador"/>
+          <field name="cantidad_comprada"/>
+          <field name="fecha_compra"/>
+          <field name="coste_total"/>
+          <field name="metodo_pago"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Compra FORM VIEW -->
+    <record model="ir.ui.view" id="cesta_compra_compra_form">
+      <field name="name">cesta_compra.compra.form</field>
+      <field name="model">cesta_compra.compra</field>
+      <field name="arch" type="xml">
+        <form string="Compra">
+          <sheet>
+            <group>
+              <field name="id_inventario"/>
+              <field name="id_comprador"/>
+              <field name="cantidad_comprada"/>
+              <field name="fecha_compra"/>
+              <field name="coste_total" readonly="1"/>
+            </group>
+            <group>
+              <field name="metodo_pago"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cesta_compra_compra">
+      <field name="name">Compra</field>
+      <field name="res_model">cesta_compra.compra</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="cesta_compra" id="cesta_compra_menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Productos" id="cesta_compra_menu_1" parent="cesta_compra_menu_root" action="cesta_compra_producto"/>
+    <menuitem name="Clientes" id="cesta_compra_menu_2" parent="cesta_compra_menu_root" action="cesta_compra_cliente"/>
+    <menuitem name="Compras" id="cesta_compra_menu_3" parent="cesta_compra_menu_root" action="cesta_compra_compra"/>
+
+  </data>
+</odoo>
