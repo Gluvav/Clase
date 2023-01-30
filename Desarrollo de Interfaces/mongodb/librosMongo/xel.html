@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="node_modules/xel/xel.js" type="module"></script>
+    <meta name="xel-theme" content="./node_modules/xel/themes/adwaita.css">
+    <link rel="stylesheet" href="./css/photon.css">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <meta name="xel-iconsets" content="./node_modules/xel/iconsets/material.svg">
+    <title>Libros</title>
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane">
+                    <div class="wrapper" id="wrapper">
+                        <!-- IMAGES -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="toolbar toolbar-footer">
+            <x-box>
+                <x-button style="margin-left:15%">
+                    <x-label>BUSQUEDAS</x-label>
+                    <x-icon href="#search"></x-icon>
+                    <dialog>
+                        <x-box vertical style="margin-left: 30px; margin-top: 20px;">
+                            <!--Busqueda por autor-->
+                            <x-box>
+                                <x-input id="txtBuscarAutor">
+                                    <x-icon href="#search"></x-icon>
+                                    <x-label>Buscar por Autor</x-label>
+                                </x-input>
+                                <x-button style="margin-left: 10px;" id="btnBuscarAutor">
+                                    <x-icon href="#search"></x-icon>
+                                </x-button>
+                            </x-box>
+                            <!--Busqueda por titulo-->
+                            <x-box style="margin-top: 10px; margin-bottom: 10px;">
+                                <x-input id="txtBuscarTitulo">
+                                    <x-icon href="#search"></x-icon>
+                                    <x-label>Buscar por Titulo</x-label>
+                                </x-input>
+                                <x-button style="margin-left: 10px;" id="btnBuscarTitulo">
+                                    <x-icon href="#search"></x-icon>
+                                </x-button>
+                            </x-box>
+                        </x-box>
+                        <x-notification id="notification" timeout="2000"></x-notification>
+                    </dialog>
+                </x-button>
+                <x-button style="margin-left:10px">
+                    <x-label>NUEVO LIBRO</x-label>
+                    <x-icon href="#note"></x-icon>
+                    <dialog>
+                        <x-box vertical style="margin-left: 30px; margin-top: 20px; margin-right: 30px;">
+                            <!--Busqueda por autor-->
+                            <x-box style=" margin-bottom: 5px;">
+                                <x-input id="txtNuevoTitulo">
+                                    <x-icon href="#folder"></x-icon>
+                                    <x-label>Titulo nuevo Libro</x-label>
+                                </x-input>
+                            </x-box>
+                            <x-box style=" margin-bottom: 5px;">
+                                <x-input id="txtNuevoAutor">
+                                    <x-icon href="#folder"></x-icon>
+                                    <x-label>Autor nuevo Libro</x-label>
+                                </x-input>
+                            </x-box>
+                            <x-box style=" margin-bottom: 5px;">
+                                <x-input id="txtNuevaImagen">
+                                    <x-icon href="#image"></x-icon>
+                                    <x-label>Imagen nuevo Libro</x-label>
+                                </x-input>
+                            </x-box>
+                            <x-box style=" margin-bottom: 5px;">
+                                <x-button style="margin-left: 50px;" id="btnAddLibro">
+                                    <x-icon href="#add"></x-icon>
+                                </x-button>
+                            </x-box>
+                        </x-box>
+                        <x-notification id="notification2" timeout="2000"></x-notification>
+                    </dialog>
+                </x-button>
+                <x-button style="margin-left:10px">
+                    <x-label>Borrar Libro</x-label>
+                    <x-icon href="#delete"></x-icon>
+                    <dialog>
+                        <x-box vertical style="margin-left: 30px; margin-top: 20px; margin-right: 30px;">
+                            <x-box style=" margin-bottom: 5px;">
+                                <x-input id="txtTituloBorrar">
+                                    <x-icon href="#folder"></x-icon>
+                                    <x-label>Titulo libro a borrar</x-label>
+                                </x-input>
+                            </x-box>
+                            <x-box style=" margin-bottom: 5px;">
+                                <x-button style="margin-left: 50px;" id="btnBorrarTitulo">
+                                    <x-icon href="#delete"></x-icon>
+                                </x-button>
+                            </x-box>
+                        </x-box>
+                        <x-notification id="notification3" timeout="2000"></x-notification>
+                    </dialog>
+                </x-button>
+                <x-button style="margin-left:10px" id="todos">
+                    <x-label>TODOS</x-label>
+                    <x-icon href="#home"></x-icon>
+                </x-button>
+            </x-box>
+        </footer>
+    </div>
+    <script src="./libros.js"></script>
+</body>
+
+</html>

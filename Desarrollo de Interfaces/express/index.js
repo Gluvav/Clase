@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const os = require('os');
 
 let app = express();//load express
 
@@ -43,6 +44,19 @@ app.get('/insert', (req, res) => {
 
 app.get('/', (req, res) => {
     res.send('Hola, estas en /');
+});
+
+app.get('/fecha', (req, res) => {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0');
+    let yyyy = today.getFullYear();
+    today = dd + "/" + mm + "/" + yyyy;
+    res.send(today)
+});
+
+app.get('/usuario', (req, res) => {
+    res.send(os.hostname());
 });
 
 app.listen(8080);
