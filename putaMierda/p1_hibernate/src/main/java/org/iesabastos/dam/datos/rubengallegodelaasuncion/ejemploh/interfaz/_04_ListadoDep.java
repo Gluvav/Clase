@@ -1,14 +1,16 @@
-package org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.interfaz;
+package org.iesabastos.dam.datos.rubengallegodelaasuncion;
 
+import java.util.ArrayList;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.iesabastos.dam.datos.rubengallegodelaasuncion.Utils.HibernateUtil;
-import org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.Ciclista;
 
-public class _01b01DirectorDelCiclista {
-    
-    public _01b01DirectorDelCiclista(int dorsal){
+public class _04_ListadoDep {
+
+    public _04_ListadoDep() {
+
         try {
 
             HibernateUtil.buildSessionFactory();
@@ -17,24 +19,32 @@ public class _01b01DirectorDelCiclista {
             Session session = HibernateUtil.getCurrentSession();
             session.beginTransaction();
 
-            Ciclista ciclista = (Ciclista) session.get(Ciclista.class, dorsal);
-            System.out.println(ciclista.getEquipo().getDirector());
+            Query query = session.createQuery("from Empleado");
+            ArrayList<Empleado> empleados = (ArrayList<Empleado>) query.list();
 
-            session.save(ciclista);
+            for (Empleado em : empleados) {
+                if (em.getDepartamento().getDept_NO() == 10) {
+                    System.out.println(em.getEmp_no() + ", " + em.getNombre());
+                }
+            }
+
+            // session.save(ciclista);
 
             session.getTransaction().commit();
             session.close();
-            System.out.println("Fin del programa");
+
+            // System.out.println(cad);
 
         } catch (HibernateException e) {
             e.printStackTrace();
             System.out.println("Ha pasado algo chungo :(");
             // TODO: handle exception
         }
+
     }
 
     public static void main(String[] args) {
-        new _01b01DirectorDelCiclista(98);
+        new _04_ListadoDep();
     }
 
 }

@@ -7,8 +7,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.iesabastos.dam.datos.rubengallegodelaasuncion.Utils.HibernateUtil;
 import org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.Ciclista;
-import org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.Equipo;
-import org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.Etapa;
 
 public class _01c03EtapasGanadasPorEquipo {
 

@@ -1,10 +1,8 @@
 package org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.interfaz;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.iesabastos.dam.datos.rubengallegodelaasuncion.Utils.HibernateUtil;
 import org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.Equipo;

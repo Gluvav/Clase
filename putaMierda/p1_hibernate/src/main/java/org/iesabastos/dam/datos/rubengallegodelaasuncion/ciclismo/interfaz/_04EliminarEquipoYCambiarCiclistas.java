@@ -7,8 +7,6 @@ import org.hibernate.Session;
 import org.iesabastos.dam.datos.rubengallegodelaasuncion.Utils.HibernateUtil;
 import org.iesabastos.dam.datos.rubengallegodelaasuncion.ciclismo.Equipo;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar;
-
 public class _04EliminarEquipoYCambiarCiclistas {
 
     public static void main(String[] args) {

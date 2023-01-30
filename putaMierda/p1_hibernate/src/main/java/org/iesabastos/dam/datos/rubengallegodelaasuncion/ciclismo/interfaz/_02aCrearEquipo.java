@@ -16,13 +16,13 @@ public class _02aCrearEquipo {
 
     public static void main(String[] args) {
 
-        Scanner str = new Scanner(System.in);
+        Scanner scstr = new Scanner(System.in);
         //Scanner nums = new Scanner(System.in);
 
         String nomeq="";
         while (nomeqBool != true) {
             System.out.println("Introduce el nombre del equipo:");
-            nomeq = str.nextLine();
+            nomeq = scstr.nextLine();
             if (notInDatabase(nomeq) == true) {
                 nomeqBool = true;
             } else {
@@ -32,7 +32,7 @@ public class _02aCrearEquipo {
         String director2="";
         while (direcBool != true) {
             System.out.println("Introduce el nombre del director:");
-            director2 = str.nextLine();
+            director2 = scstr.nextLine();
             if (notInDatabase(director2) == true) {
                 direcBool = true;
             } else {
