@@ -1,0 +1,171 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <!--# PArque de bomberos #-->
+    <record model="ir.ui.view" id="parque_bomberos_parque_tree">
+      <field name="name">parque.bomberos.parque.tree</field>
+      <field name="model">parque_bomberos.parque</field>
+      <field name="arch" type="xml">
+        <tree string="Parque">
+          <field name="id_parque"/>
+          <field name="fecha_inauguracion"/>
+          <field name="nombre_parque"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="parque_bomberos_parque_form">
+      <field name="name">parque.bomberos.parque.form</field>
+      <field name="model">parque_bomberos.parque</field>
+      <field name="arch" type="xml">
+        <form string="Formulario del Parque de Bomberos">
+          <sheet>
+            <group>
+              <field name="id_parque"/>
+              <field name="fecha_inauguracion"/>
+              <field name="nombre_parque"/>
+              <field name="camion_id"/>
+            </group>
+          </sheet>
+        </form>
+        <!--<tree string="Parque">
+          <field name="id_parque"/>
+          <field name="fecha_inauguracion"/>
+          <field name="nombre_parque"/>
+        </tree>-->
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="parque_bomberos_parque">
+      <field name="name">Parque</field>
+      <field name="res_model">parque_bomberos.parque</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--# Camion de Bomberos #-->
+    <record model="ir.ui.view" id="parque_bomberos_camion_form">
+      <field name="name">parque.bomberos.camion.form</field>
+      <field name="model">parque_bomberos.camion</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="id_camion"/>
+              <field name="matricula"/>
+              <field name="bombero_id"/>
+            </group>
+          </sheet>
+        </form>
+        <!--<tree string="Camion">
+          <field name="id_camion"/>
+          <field name="matricula"/>
+        </tree>-->
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="parque_bomberos_camion_tree">
+      <field name="name">parque.bomberos.camion.tree</field>
+      <field name="model">parque_bomberos.camion</field>
+      <field name="arch" type="xml">
+        <!--<form>
+          <sheet>
+            <group>
+              <field name="id_camion"/>
+              <field name="matricula"/>
+            </group>
+          </sheet>
+        </form>-->
+        <tree string="Camion">
+          <field name="id_camion"/>
+          <field name="matricula"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="parque_bomberos_camion">
+      <field name="name">Camion</field>
+      <field name="res_model">parque_bomberos.camion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--# Bombero #-->
+    <record model="ir.ui.view" id="parque_bomberos_bombero_tree">
+      <field name="name">parque.bomberos.bombero.tree</field>
+      <field name="model">parque_bomberos.bombero</field>
+      <field name="arch" type="xml">
+        <tree string="Bombero">
+          <field name="id_bombero"/>
+          <field name="dni"/>
+          <field name="nombre"/>
+          <field name="apellidos"/>
+          <field name="fecha_nacimiento"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Calendar view -->
+    <record model="ir.ui.view" id="parque_bomberos_bombero_calendar">
+      <field name="name">parque.bomberos.bombero.calendar</field>
+      <field name="model">parque_bomberos.bombero</field>
+      <field name="arch" type="xml">
+        <calendar string="Bombero" date_start="fecha_nacimiento" color="nombre" >
+          <field name="id_bombero"/>
+          <field name="dni"/>
+          <field name="nombre"/>
+          <field name="apellidos"/>
+          <field name="fecha_nacimiento"/>
+          <field name="age"/>
+        </calendar>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="parque_bomberos_bombero_form">
+      <field name="name">parque.bomberos.bombero.form</field>
+      <field name="model">parque_bomberos.bombero</field>
+      <field name="arch" type="xml">
+        <form string="Formulario Bomberos">
+          <sheet>
+            <group string="Bomberos">
+              <field name="id_bombero"/>
+              <field name="dni"/>
+              <field name="nombre"/>
+              <field name="apellidos"/>
+              <field name="fecha_nacimiento"/>
+              <field name="age"/>
+            </group>
+          </sheet>
+        </form>
+        <!--<tree string="Bombero">
+          <field name="id_bombero"/>
+          <field name="dni"/>
+          <field name="nombre"/>
+          <field name="apellidos"/>
+        </tree>-->
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="parque_bomberos_bombero">
+      <field name="name">Bombero</field>
+      <field name="res_model">parque_bomberos.bombero</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!--#  #-->
+    <!-- Top menu item -->
+    <menuitem name="parque_bomberos" id="parque_bomberos_menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Parque Bomberos" id="parque_bomberos_menu_1" parent="parque_bomberos_menu_root" action="parque_bomberos_parque"/>
+    <menuitem name="Camiones de Bomberos" id="parque_bomberos_menu_2" parent="parque_bomberos_menu_root" action="parque_bomberos_camion"/>
+    <menuitem name="Bomberos" id="parque_bomberos_menu_3" parent="parque_bomberos_menu_root" action="parque_bomberos_bombero"/>
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="parque_bomberos.menu_1_list" parent="parque_bomberos.menu_1"
+              action="parque_bomberos.action_window"/>
+    <menuitem name="Server to list" id="parque_bomberos" parent="parque_bomberos.menu_2"
+              action="parque_bomberos.action_server"/>
+-->
+  </data>
+</odoo>
