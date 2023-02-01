@@ -1,0 +1,9 @@
+3. Explica con tus palabras lo que es una API. ¿Es Express una API?¿Es node-fetch
+una API? ¿Porqué? Explica cómo funcionan las aplicaciones cliente-servidor
+que hemos hecho en clase. (2 puntos)
+
+Una api es un como una caja de herramientas, usandopla te permite usar unicamente la
+herramienta que necesitas.
+
+Las aplicaciones de clase se ponen a escuchar en un puerto y en el momento en el que
+hacie hace un fech valido a ese puerto, le manda la informacion solicitada.

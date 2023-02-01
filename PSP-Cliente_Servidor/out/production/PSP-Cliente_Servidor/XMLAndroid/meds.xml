@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Medicamentos>
+    <medicamento>
+        <identificador>0</identificador>
+        <nombre>med1</nombre>
+        <descripcion>things about med 1</descripcion>
+        <delUsuario>False</delUsuario>
+    </medicamento>
+    <medicamento>
+        <identificador>1</identificador>
+        <nombre>med2</nombre>
+        <descripcion>things about med 1</descripcion>
+        <delUsuario>False</delUsuario>
+    </medicamento>
+    <medicamento>
+        <identificador>2</identificador>
+        <nombre>med3</nombre>
+        <descripcion>things about med 1</descripcion>
+        <delUsuario>False</delUsuario>
+    </medicamento>
+    <medicamento>
+        <identificador>3</identificador>
+        <nombre>med4</nombre>
+        <descripcion>things about med 1</descripcion>
+        <delUsuario>False</delUsuario>
+    </medicamento>
+    <medicamento>
+        <identificador>4</identificador>
+        <nombre>med5</nombre>
+        <descripcion>things about med 1</descripcion>
+        <delUsuario>False</delUsuario>
+    </medicamento>
+</Medicamentos>

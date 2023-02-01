@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Datos>
+    <alumno>
+        <nia>1212</nia>
+        <name>Ruben</name>
+        <surname>Gallego</surname>
+        <curso>DAM</curso>
+    </alumno>
+</Datos>
