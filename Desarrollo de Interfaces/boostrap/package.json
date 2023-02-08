@@ -1,0 +1,18 @@
+{
+  "name": "boostrap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "electron": "^22.2.0",
+    "eletron": "^0.0.1-security",
+    "mongoose": "^6.9.0"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "ej de clase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", "start": "node ."
+  },
+  "keywords": [
+    "ejercicio"
+  ],
+  "author": "Gluben Ascrew",
+  "license": "ISC"
+}
