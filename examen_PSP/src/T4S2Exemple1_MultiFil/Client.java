@@ -5,8 +5,7 @@ import java.io.*;
 public class Client {
 
 	public static void main(String args[]) throws IOException {
-		try (
-				Socket socket = new Socket("localhost", 60000)) {
+		try (Socket socket = new Socket("localhost", 60000)) {
 
 			// CREE FLUXOS D'ENTRADA I EIXIDA
 			PrintWriter feixida = new PrintWriter(socket.getOutputStream(), true);
@@ -17,7 +16,7 @@ public class Client {
 
 			String cadena, cadenaRebuda;
 
-			System.out.println("Introdueix cadenes i rep en majúscula. Introdueix * per a finalitzar");
+			System.out.println("Introdueix cadenes i rep en majï¿½scula. Introdueix * per a finalitzar");
 			do {
 				System.out.println("Introdueix cadena: ");
 				cadena = in.readLine();
@@ -27,7 +26,7 @@ public class Client {
 
 			} while (!(cadena.contentEquals("*")));
 
-			System.out.println("Fi comunicació");
+			System.out.println("Fi comunicaciï¿½");
 
 			// TANQUE FLUXOS I SOCKET
 			feixida.close();
