@@ -70,6 +70,7 @@ function findAll() {
 
 function printAll(games) {
     let cad = "";
+    document.getElementById('game').innerHTML = "<div class='wrapper' id='wrapper'></div>";
     //for (const game in games) {
     for (let i = 0; i < games.length; i++) {
         cad += "<div class='test" + i + "'>";
@@ -89,10 +90,10 @@ function printAll(games) {
 function showGame(i) {
     document.getElementsByClassName('test' + i)[0].addEventListener('click', () => {
         Game.find().then(resu => {
-            let cad = "<h1 class='title'>" + resu[i].name + "</h1>";
-            cad += "    <img src='img/" + resu[i].img + "' height='170' width='108'><br>";
-            cad += "    <p><label><strong>" + resu[i].launcYear + "</strong></label></p>";
-            cad += "    <p><label>" + resu[i].synopsis + "</label></p>";
+            let cad = "<h1>" + resu[i].name + "</h1>";
+            cad += "   <img src='img/" + resu[i].img + "' height='270' width='208'><br>";
+            cad += "   launch year: <strong>" + resu[i].launcYear + "</strong><br>";
+            cad += "   synopsis: <strong>" + resu[i].synopsis + "</strong>";
             document.getElementById('game').innerHTML = cad;
         }).catch(err => {
             console.log("Error : " + err);
