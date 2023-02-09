@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/gameLibrary', {
+mongoose.connect('mongodb://127.0.0.1:27017/gameLibrary', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -10,7 +10,8 @@ let gamesSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: true,
-        minlength: 1
+        minlength: 1,
+        unique: true
     },
     name: {
         type: String,
