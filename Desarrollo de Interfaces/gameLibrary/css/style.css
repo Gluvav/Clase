@@ -6,21 +6,31 @@ footer {
 }
 
 .wrapper {
-    border: 2px solid #5c5a5a;
+    border: 2px transparent;
     border-radius: 5px;
-    background-color: #fffffe;
+    background-color: #28a0f0;
 }
 
 .wrapper>div {
-    border: 2px solid #8a8585;
+    border: 2px transparent;
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: #9dd4ee;
     padding: 1em;
     color: #0e0d0d;
+    margin: 5px;
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 
+}
+
+.addPage {
+    margin: 10px;
+    padding: 10px;
+}
+
+#gamePage {
+    text-align: center;
 }

@@ -89,19 +89,114 @@ function printAll(games) {
 
 function showGame(i) {
     document.getElementsByClassName('test' + i)[0].addEventListener('click', () => {
+
         Game.find().then(resu => {
-            let cad = "<h1>" + resu[i].name + "</h1>";
+            let cad = "";
+            cad += "<div id='gamePage" + i + "'>";
+            cad += "   <h1>" + resu[i].name + "</h1>";
             cad += "   <img src='img/" + resu[i].img + "' height='270' width='208'><br>";
-            cad += "   launch year: <strong>" + resu[i].launcYear + "</strong><br>";
-            cad += "   synopsis: <strong>" + resu[i].synopsis + "</strong>";
+            cad += "   <strong>" + resu[i].launcYear + "</strong><br>";
+            cad += "   <strong>" + resu[i].synopsis + "</strong><br>";
+
+            cad += "<button class='btn btn-warning' id='modify'><span class='icon icon-pencil icon-text'></span>";
+            cad += "    <font color='#3F3F3D'>Modify game</font>";
+            cad += "</button>"
+            cad += "<button class='btn btn-negative' id='remove'><span class='icon icon-trash icon-text'></span>"
+            cad += "    <font color='#3F3F3D'>Remove game</font>"
+            cad += "</button>"
+
+            cad += "</div>";
+
             document.getElementById('game').innerHTML = cad;
+
+
+
         }).catch(err => {
             console.log("Error : " + err);
-        })
+        });
+        Game.find().then(games => {
+            for (let j = 0; j < games.length; j++) {
+                if (i == j) {
+                    deleteGame(i, games);
+                }
+            }
+        }).catch(err => {
+            console.log("Error : " + err);
+        });
 
-    })
+        
+    });
+}
+
+function addGame() {
+    let cad = "";
+    cad += "<div class='addPage'>";
+    cad += "    <input type='number' id='id' name='id' placeholder='game id' required>";
+    cad += "    <input type='text' id='name' name='name' placeholder='game name' required>";
+    cad += "    <input type='text' id='developer' name='developer' placeholder='game developer' required>";
+    cad += "    <input type='text' id='synopsis' name='synopsis' placeholder='game synopsis' required>";
+    cad += "    <input type='number' id='launchYear' name='launchYear' placeholder='game launch year' required>";
+    cad += "    <input type='text' id='img' name='img' placeholder='game img' required>";
+    cad += "</div><div class='addPage'>";
+    cad += "    <button class='btn btn-positive' id='adding'><span class='icon icon-plus icon-text'></span>";
+    cad += "        <font color='#3F3F3D'>Add game</font>";
+    cad += "    </button>";
+    cad += "</div>";
+    document.getElementById('game').innerHTML = cad;
+
+    document.getElementById('adding').addEventListener('click', () => {
+        //make promise to save game
+        let id = document.getElementById('id').value;
+        let name = document.getElementById('name').value;
+        let developer = document.getElementById('developer').value;
+        let synopsis = document.getElementById('synopsis').value;
+        let launchYear = document.getElementById('launchYear').value;
+        let img = document.getElementById('img').value;
+
+        if (img.length <= 0) {
+            img = "img.jpg";
+        }
+
+        let game = new Game({
+            id: id,
+            name: name,
+            developer: developer,
+            synopsis: synopsis,
+            launcYear: launchYear,
+            img: img
+        });
+        let p = game.save().then(resu => {
+            console.log("Game added " + resu);
+        }).catch(err => {
+            console.log(err);
+        });
+
+        Promise.all([p]).then(resu => {
+            console.log("Game saved " + resu);
+            findAll();
+        }).catch(err => {
+            console.log(err);
+        });
+
+    });
+}
+
+function deleteGame(i, json) {
+    remove.addEventListener('click', () => {
+        Game.findOneAndDelete(json[i].id).then(resu => {
+            console.log("Game deleted " + resu);
+            findAll();
+        }).catch(err => {
+            console.log(err);
+        });
+    });
 }
 
 home.addEventListener('click', () => {
     findAll();
-})
+});
+
+add.addEventListener('click', () => {
+    //load page with unputs to add the game.
+    addGame();
+});
