@@ -3,8 +3,6 @@ const database = require('./database/database');
 
 let home = document.getElementById('home');
 let add = document.getElementById('add');
-let modify = document.getElementById('modify');
-let remove = document.getElementById('remove');
 
 findAll();
 
@@ -92,11 +90,11 @@ function showGame(i) {
 
         Game.find().then(resu => {
             let cad = "";
-            cad += "<div id='gamePage" + i + "'>";
+            cad += "<div id='gamePage'>";
             cad += "   <h1>" + resu[i].name + "</h1>";
             cad += "   <img src='img/" + resu[i].img + "' height='270' width='208'><br>";
             cad += "   <strong>" + resu[i].launcYear + "</strong><br>";
-            cad += "   <strong>" + resu[i].synopsis + "</strong><br>";
+            cad += "   <strong>" + resu[i].synopsis + "</strong><br><br><br>";
 
             cad += "<button class='btn btn-warning' id='modify'><span class='icon icon-pencil icon-text'></span>";
             cad += "    <font color='#3F3F3D'>Modify game</font>";
@@ -109,22 +107,20 @@ function showGame(i) {
 
             document.getElementById('game').innerHTML = cad;
 
+            document.getElementById('remove').addEventListener('click', () => {
+                Game.findOneAndDelete({ id: resu[i].id }).then(a => {
+                    console.log('Game deleted successfully ' + a);
+                    findAll();
+                }).catch(e => console.log(e));
+            });
 
+            document.getElementById('modify').addEventListener('click', () => {
+                printModify(i);
+            });
 
         }).catch(err => {
             console.log("Error : " + err);
         });
-        Game.find().then(games => {
-            for (let j = 0; j < games.length; j++) {
-                if (i == j) {
-                    deleteGame(i, games);
-                }
-            }
-        }).catch(err => {
-            console.log("Error : " + err);
-        });
-
-        
     });
 }
 
@@ -181,16 +177,35 @@ function addGame() {
     });
 }
 
-function deleteGame(i, json) {
-    remove.addEventListener('click', () => {
-        Game.findOneAndDelete(json[i].id).then(resu => {
-            console.log("Game deleted " + resu);
-            findAll();
-        }).catch(err => {
-            console.log(err);
+function printModify(i) {
+
+    Game.find().then(resu => {
+        let cad = "";
+        cad += "<div id='gamePage" + i + "'>";
+        cad += "    name: <input class='form-control' id='gameFieldName" + i + "' value='" + resu[i].name + "'></input>";
+        cad += "    <img src='img/" + resu[i].img + "' height='270' width='208'><br>";
+        cad += "    launch year: <input class='form-control' id='gameFieldYear" + i + "' value='" + resu[i].launcYear + "'></input>";
+        cad += "    synopsis: <input class='form-control' id='gameFieldDesc" + i + "' value='" + resu[i].synopsis + "'></input>";
+        cad += "    <button class='btn btn-warning' id='save'><span class='icon icon-floppy icon-text'></span>"
+        cad += "        <font color='#3F3F3D'>Save Changes</font>"
+        cad += "    </button>"
+
+        cad += "</div>";
+
+        document.getElementById('game').innerHTML = cad;
+
+        document.getElementById('save').addEventListener('click', () => {
+            let newName = document.getElementById('gameFieldName'+i).value;
+            let newYear = document.getElementById('gameFieldYear'+i).value;
+            let newDesc = document.getElementById('gameFieldDesc'+i).value;
+            Game.findOneAndUpdate({ name: resu[i].name }, { name: newName, launcYear: newYear, synopsis: newDesc}).then(succes => {
+                console.log("Game updated successfully " + succes);
+                findAll();
+            }).catch(err => console.log("Game updated failed " + err));
         });
+
     });
-}
+}   
 
 home.addEventListener('click', () => {
     findAll();

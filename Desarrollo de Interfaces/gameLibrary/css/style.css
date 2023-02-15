@@ -9,6 +9,7 @@ footer {
     border: 2px transparent;
     border-radius: 5px;
     background-color: #28a0f0;
+    width: 100%;
 }
 
 .wrapper>div {
@@ -23,7 +24,6 @@ footer {
 .wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
 }
 
 .addPage {
@@ -33,4 +33,8 @@ footer {
 
 #gamePage {
     text-align: center;
+}
+
+.window {
+    background-color: #28a0f0;
 }
