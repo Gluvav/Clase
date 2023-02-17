@@ -12,7 +12,7 @@ function openWindow() {
   newwin.setMenu(null);
   newwin.loadFile('index.html')
   newwin.setAutoHideMenuBar(true)
-  //newwin.webContents.openDevTools()
+  newwin.webContents.openDevTools()
 }
 
 app.on('ready', openWindow)
