@@ -3,17 +3,14 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <signal.h>
+#include <sys/wait.h>
 
 void gestion_padre() {
-  printf("Gestion Padre\n");
+  printf("Gestion Padre pid = %d\n", getpid());
 }
 
-void gestion_hijo1() {
-  printf("Gestion Hijo1\n");
-}
-
-void gestion_hijo2(){
-  printf("Gestion hijo2\n");
+void gestion_hijo() {
+  printf("Gestion Hijo, pid = %d - pidPadre = %d\n", getpid(), getppid());
 }
 
 void gestion_error(){
@@ -31,19 +28,27 @@ void main() {
       printf("Error al crear el proceso hijo...\n");
       exit(-1);
     case 0:
-      signal (SIGUSR1, gestion_hijo1);
-      //espera a que el llegue la seálñ para hacer gestion_hijo1
-      //sleep(1);
-      kill (pid_padre, SIGUSR1);
+      signal (SIGUSR1, gestion_hijo);
       pause();
       break;
     default:
-      signal(SIGUSR1, gestion_padre);
-      //espera a que el llegue la seálñ para hacer gestion_padre
-      for (size_t i = 0; i < 1; i++) {
-        pause();
-        //sleep(1);
-        kill(pid_hijo1, SIGUSR1);
+      sleep(1);
+      kill(pid_hijo1, SIGUSR1);
+      pid_hijo2 = fork();
+      switch (pid_hijo2) {
+        case -1:
+          gestion_error();
+          break;
+        case 0:
+          signal(SIGUSR1, gestion_hijo);
+          pause();
+          break;
+        default:
+          sleep(1);
+          kill(pid_hijo2, SIGUSR1);
+          pid_hijo1 = wait(NULL);
+          pid_hijo2 = wait(NULL);
+          gestion_padre();
       }
   }
 
