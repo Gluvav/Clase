@@ -1,11 +1,11 @@
-package u5Exemple1_SHA;
+package U5Exemple1_SHA;
 
 import java.security.MessageDigest;
 import java.security.Provider;
 
 public class U5Exemple1_SHA {
 	public static void main(String[] args) throws Exception {
-		String text = "Sóc el contingut d'un text";
+		String text = "Soc el contingut d'un text";
 		System.out.println("Text origen per a hash " + text);
 
 		// CREE OBJECTE MessageDigest
@@ -25,7 +25,7 @@ public class U5Exemple1_SHA {
 
 		System.out.println("Nonmbre de bytes " + md.getDigestLength());
 		System.out.println("Algorisme " + md.getAlgorithm());
-		System.out.println("Missatge resum " + resum_amb_clau + new String(resum));
+		System.out.println("Missatge resum " + resum_amb_clau + ", " + new String(resum));
 
 		// CONVERTEISC L'ARRAY DE BYTES A HEXADECIMAL
 		StringBuffer hexString = new StringBuffer();
