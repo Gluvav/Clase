@@ -1,0 +1,182 @@
+
+¿Qué es lo que hace el siguiente código?
+
+import java.net.*;
+
+public class ReceiveUDP {
+    public static void main(String args[]) throws Exception {
+        byte[] buf = new byte[1024];
+        DatagramPacket packet = new DatagramPacket(buf, buf.length);
+        DatagramSocket socket = new DatagramSocket(1234);
+        socket.receive(packet);
+        String received = new String(packet.getData(), 0, packet.getLength());
+        System.out.println("Received: " + received);
+    }
+}
+a.Recibe un paquete UDP
+b.Envía y recibe un paquete UDP
+c.No hace nada, faltan métodos importantes
+d.Envía un paquete UDP
+
+----------------------------------------------
+
+¿Cuál es la principal diferencia entre el cifrado simétrico y la firma digital?
+a.La firma digital y el cifrado simétrico son técnicas equivalentes y se utilizan de la misma manera
+b.La firma digital es más segura que el cifrado simétrico
+c.Son complementarias. La firma digital utiliza cifrado simétrico
+d.La firma digital es utilizada para verificar la integridad de un mensaje mientras que el cifrado simétrico es utilizado para ocultar el contenido de un mensaje
+
+----------------------------------------------
+
+¿Qué acción debe realizar el programador para que un objeto sea enviado a través de un socket TCP en Java?
+a.Implementar la interfaz Serializable en la clase del objeto
+b.Todas las anteriores
+c.Utilizar el método write() del socket
+d.Especificar la dirección IP y el puerto de destino
+
+----------------------------------------------
+
+¿Qué método de la clase java.net.ServerSocket se usa para aceptar una nueva conexión de un cliente remoto?
+a.connect()
+b.listen()
+c.accept()
+d.bind()
+
+----------------------------------------------
+
+¿Qué sucede si ejecutas el siguiente código?
+
+hiloA.start();
+hiloB.start();
+hiloA.join();
+hiloB.join();
+hiloC.start();
+
+a.El programa principal espera a que hiloA finalice antes de continuar su ejecución, y luego inicia hiloC. hiloB se ejecuta en paralelo con hiloC.
+b.El programa principal inicia hiloA y hiloB al mismo tiempo, y luego inicia hiloC. No espera a que ninguno de los hilos finalice antes de continuar su ejecución.
+c.El programa principal espera a que hiloA y hiloB finalicen antes de continuar su ejecución, y luego inicia hiloC.
+d.El programa principal espera a que hiloB finalice antes de continuar su ejecución, y luego inicia hiloC. hiloA se ejecuta en paralelo con hiloC.
+
+---------------------------------------------
+
+¿Qué es una Autoridad de Certificación (CA)?
+a.Una entidad encargada de emitir certificados digitales a las partes que solicitan su identificación en línea
+b.Una compañía de seguridad informática que ofrece soluciones de cifrado para transacciones en línea
+c.Una agencia gubernamental responsable de regulaciones de seguridad en Internet
+d.Una organización de seguridad de Internet que administra y verifica la información de los certificados digitales
+
+----------------------------------------------
+
+Todos los procesos ejecutan como mínimo un hilo
+a.Falso
+b.Verdadero
+
+---------------------------------------------
+
+¿Cuál es el algoritmo de firma digital más utilizado por los certificados digitales?
+a.AES
+b.DES
+c.RSA
+d.Blowfish
+
+---------------------------------------------
+
+¿Qué puede ocurrir si la dirección IP especificada en el método getByName() de la clase java.net.InetAddress no es válida o no existe?
+a.Se devolverá una dirección IP genérica
+b.Se lanzará una excepción de tipo UnknownHostException
+c.Se lanzará una excepción de tipo IOException
+d.Se devolverá un objeto null
+
+---------------------------------------------
+
+¿Por qué es importante implementar un servidor multihilo TCP en un sistema en línea?
+a.Para reducir la velocidad de transmisión de datos.
+b.Para aumentar la seguridad y prevenir ataques.
+c.Para simplificar la configuración y la administración del servidor.
+d.Para mejorar la escalabilidad y la capacidad de manejar múltiples solicitudes simultáneamente.
+
+---------------------------------------------
+
+Quants processos es crearàn (incloent el procés inicial)?
+
+       #include<stdio.h>
+       #include<unistd.h>
+
+       int main()
+       {
+           fork();
+           fork();
+           fork();
+           printf("Abastos\n");
+           return 0;
+       }
+
+a.5
+b.7
+c.3
+d.8
+
+-------------------------------------------
+
+¿Qué sucede si llamas a close() en un Socket antes de llamar a getOutputStream().write()?
+a.Se espera hasta que se complete la escritura antes de cerrar la conexión
+b.Se envía el contenido escrito antes de cerrar la conexión
+c.Se genera una excepción SocketException
+d.No sucede nada, la conexión se cierra de todas maneras
+
+-------------------------------------------
+
+¿Qué sucede si ejecutas el siguiente código?
+
+hiloA.start();
+hiloB.start();
+hiloA.join();
+hiloB.join();
+a.El programa principal espera a que hiloB finalice antes de continuar su ejecución, pero no espera a que hiloA finalice.
+b.El programa principal espera a que hiloA finalice antes de continuar su ejecución, pero no espera a que hiloB finalice.
+c.El programa principal no espera a que ninguno de los hilos finalice antes de continuar su ejecución.
+d.El programa principal espera a que ambos hilos finalicen antes de continuar su ejecución.
+
+--------------------------------------------
+
+¿Cuál es el método utilizado para enviar un objeto a través de un socket TCP en Java?{
+a.sendObject()
+b.writeData()
+c.writeObject()
+d.send()
+
+--------------------------------------------
+
+¿Qué ocurre si se llama al método join() en un hilo que ya ha finalizado su ejecución?
+a.
+Ninguna de las anteriores.
+b.
+El método join() lanza una excepción.
+c.
+El programa entra en un estado de espera infinita.
+d.
+El método join() devuelve inmediatamente.
+
+----------------------------------------------
+
+¿Qué es lo que hace el siguiente código?
+
+import java.net.*;
+
+public class ReceiveUDP {
+    public static void main(String args[]) throws Exception {
+        byte[] buf = new byte[1024];
+        DatagramPacket packet = new DatagramPacket(buf, buf.length);
+        DatagramSocket socket = new DatagramSocket(1234);
+        socket.receive(packet);
+        String received = new String(packet.getData(), 0, packet.getLength());
+        System.out.println("Received: " + received);
+    }
+}
+a.Recibe un paquete UDP
+b.Envía y recibe un paquete UDP
+c.No hace nada, faltan métodos importantes
+d.Envía un paquete UDP
+
+-----------------------------------------------
+

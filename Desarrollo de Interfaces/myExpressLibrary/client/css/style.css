@@ -1,0 +1,40 @@
+footer {
+    margin: auto;
+    background-color: #1e2127;
+    color: #ffffff;
+    text-align: center;
+}
+
+.wrapper {
+    border: 2px transparent;
+    border-radius: 5px;
+    background-color: #28a0f0;
+    width: 100%;
+}
+
+.wrapper>div {
+    border: 2px transparent;
+    border-radius: 5px;
+    background-color: #9dd4ee;
+    padding: 1em;
+    color: #0e0d0d;
+    margin: 5px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.addPage {
+    margin: 10px;
+    padding: 10px;
+}
+
+#gamePage {
+    text-align: center;
+}
+
+.window {
+    background-color: #28a0f0;
+}
